@@ -1,0 +1,10 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+  <section ng-repeat="post in PostPreview" class="content-PostPreview">
+    <div style="margin-bottom:30px;"ng-bind-html="post.content | GetImagePost: 580"></div>
+    <h2>{{post.title}}</h2>
+    <div ng-bind-html="post.content | limitHtml: 700"></div>
+
+  </section>
+  </ion-content>
+</ion-view>
