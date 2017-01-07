@@ -1,34 +1,43 @@
 angular.module('starter.controllers', ['ngSanitize'])
 
-.controller('DashCtrl', function($scope, $http, Home, List) {
+.controller('DashCtrl', function($scope, $http,$timeout, Home, List) {
 
+            Home.get().then(function (response) {
+         console.log(response.data.items);
+        $scope.PostPreview = response.data.items;
+
+      });
+
+      // List.get().then(function (response) {
+      //   console.log(response);
+
+      // });
+
+        $scope.doRefresh = function() {
+    
+        console.log('Refreshing!');
+        $timeout( function() {
+          //simulate async response
+      
       Home.get().then(function (response) {
          console.log(response.data.items);
         $scope.PostPreview = response.data.items;
 
       });
-      
-      // List.get().then(function (response) {
-      //   console.log(response);
 
-      // });
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    
+    }, 1000);
+      
+  };
     
 
 })
 
-.filter('limitHtml', function() {
+
+.filter('GetImagePost', function() {
     return function(PostPreview, limit) {
-
-        var changedString = String(PostPreview).replace(/<[^>]+>/gm, '');
-        var length = changedString.length;
-
-        return changedString.length > limit ? changedString.substr(0, limit - 1) : changedString; 
-    }
-})
-
-.filter('GetImagePost', function($sce) {
-    return function(PostPreview, limit) {
-
 
          return PostPreview.substr(0, limit);
 
