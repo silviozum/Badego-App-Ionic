@@ -1,23 +1,18 @@
 angular.module('starter.controllers', ['ngSanitize'])
 
-.controller('DashCtrl', function($scope, $http,$timeout, Home, List) {
+.controller('DashCtrl', function($scope, $http,$timeout, Home) {
 
-            Home.get().then(function (response) {
-         console.log(response.data.items);
+      Home.get().then(function (response) {
+        
         $scope.PostPreview = response.data.items;
 
       });
 
-      // List.get().then(function (response) {
-      //   console.log(response);
-
-      // });
-
-        $scope.doRefresh = function() {
-    
-        console.log('Refreshing!');
-        $timeout( function() {
-          //simulate async response
+      $scope.doRefresh = function() {
+  
+      console.log('Refreshing!');
+      $timeout( function() {
+        //simulate async response
       
       Home.get().then(function (response) {
          console.log(response.data.items);
@@ -44,7 +39,15 @@ angular.module('starter.controllers', ['ngSanitize'])
     }
 })
 
-.controller('ChatsCtrl', function($scope) {
+.controller('PostCtrl', function($scope,$http, $stateParams) {
+      
+      $scope.GetPostId = $stateParams.postId;      
+    
+      $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts/'+ $scope.GetPostId +'?&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
+      .success(function (response) {
+          $scope.PostDetail = response;
+      });
+        
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

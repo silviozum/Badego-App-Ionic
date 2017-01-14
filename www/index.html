@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>Badego</title>
 
     <link rel="manifest" href="manifest.json">
 
@@ -15,7 +15,13 @@
           .catch(err => console.log('Error', err));
       }
     </script>-->
-
+      <!-- facebook meta tags -->
+      <meta property="og:url"           content="http://badego.com.br" />
+      <meta property="og:type"          content="website" />
+      <meta property="og:title"         content="Badego" />
+      <meta property="og:description"   content="Sexo Drogas e Hot Rolls" />
+      <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+    <!-- End- facebook meta tags -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -27,7 +33,10 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <!-- Libs -->
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
-
+      
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Droid%20Serif%3A400%2C700%2C400italic%2C700italic" rel="stylesheet" type="text/css">
     
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -51,6 +60,14 @@
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
     -->
-    <ion-nav-view></ion-nav-view>
+    <ion-nav-view class="background"></ion-nav-view>
   </body>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </html>

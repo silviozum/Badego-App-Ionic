@@ -4,9 +4,10 @@
     </ion-refresher>
     <section ng-repeat="post in PostPreview" class="content-PostPreview">
       <div style="margin-bottom:30px;"ng-bind-html="post.content | GetImagePost: 580"></div>
-      <a href="http://judao.com.br/">
+      <a ui-sref="post({postId: post.id})">
         <h2>{{post.title}}</h2>
       </a>
+      <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
     </section>  
   </ion-content>
 </ion-view>
