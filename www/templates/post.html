@@ -1,13 +1,10 @@
 <ion-view>
   <ion-content>
     <section class="content-PostDetail">
-      <h2>{{PostDetail.title}}</h2>
-      <div style="margin-bottom:30px;"ng-bind-html="PostDetail.content"></div>
-    <div class="fb-share-button" 
-		data-href="http://www.your-domain.com/your-page.html" 
-		data-layout="button_count">
-	</div>
-      <div class="fb-comments" data-href="http://badego.com.br" data-numposts="5"></div>data-numposts="5"></div>
+      <h2 class="title-post-detail">{{PostDetail.title}}</h2>
+      <div class="post-detail"ng-bind-html="PostDetail.content"></div>
+<!--        <a facebook-feed-share class="facebookShare" data-url='{{PostDetail.url}}' data-shares='shares'>{{ shares }}</a> -->
+
 	</section>  
   </ion-content>
 </ion-view>

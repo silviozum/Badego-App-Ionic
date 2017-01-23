@@ -5,8 +5,15 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngResource'])
+angular.module('starter', ['ionic', 
+  'starter.controllers',
+   'starter.services',
+   'ngResource',
+   'angular-oauth2',
+   'djds4rce.angular-socialshare'
+])
 
+  
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,6 +29,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     }
   });
 })
+
+.run(function($FB){
+  $FB.init('1743762059272745');
+})
+
+
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -54,35 +68,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         controller: 'DashCtrl'
       }
     }
-  })
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
   });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

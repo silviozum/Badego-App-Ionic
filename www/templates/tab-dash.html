@@ -1,13 +1,34 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="Badego">
+  
+  <!-- SEARCH POST-->
+  <section class="search-post" ng-controller="SearchCtrl" ng-show="SearchBox">
+    <div class="input-search">
+      <input type="text" name="" ng-model="term" ng-keyup="search(term)" placeholder="search">
+    </div>
+    <div class="search-post-item" ng-repeat="item in SearchPostItem">
+      <a ui-sref="post({postId: item.id})">
+          <div ng-repeat="ImageFeatured in item.images">
+            <img src="{{ImageFeatured.url}}">
+          </div>
+          <span>{{item.title}}</span>
+        
+      </a>
+  </section>
+  <!--END SEARCH POST-->
+  
   <ion-content class="padding">
      <ion-refresher on-refresh="doRefresh()">                 
     </ion-refresher>
     <section ng-repeat="post in PostPreview" class="content-PostPreview">
-      <div style="margin-bottom:30px;"ng-bind-html="post.content | GetImagePost: 580"></div>
-      <a ui-sref="post({postId: post.id})">
-        <h2>{{post.title}}</h2>
-      </a>
-      <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
+      <div>
+        <a ui-sref="post({postId: post.id})">
+          <div ng-repeat="ImageFeatured in post.images">
+            <img src="{{ImageFeatured.url}}">
+          </div>
+            <h2>{{post.title}}</h2>
+          
+        </a>
+      </div>
     </section>  
   </ion-content>
 </ion-view>
