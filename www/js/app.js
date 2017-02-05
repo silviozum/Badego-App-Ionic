@@ -46,7 +46,7 @@ angular.module('starter', ['ionic',
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -58,6 +58,12 @@ angular.module('starter', ['ionic',
     url: '/post/:postId',  
     templateUrl: 'templates/post.html',
     controller: 'PostCtrl'
+  })
+
+  .state('tag-search', {
+    url: '/tag-search/:tag',  
+    templateUrl: 'templates/tag-search.html',
+    controller: 'tagSearchCtrl'
   })
 
   .state('tab.dash', {

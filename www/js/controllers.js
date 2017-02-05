@@ -27,9 +27,6 @@ angular.module('starter.controllers', ['ngSanitize'])
     }, 1000);
       
   };
-    $scope.openSearchBox = function(){
-      $scope.SearchBox = true;
-    }
 
 })
 
@@ -65,6 +62,43 @@ angular.module('starter.controllers', ['ngSanitize'])
       });
     }
   }
+        
+})
+
+.controller('tagSearchCtrl', function($scope,$http, $stateParams, $timeout) {
+
+  console.log($stateParams.tag);
+
+  $scope.labelTag = $stateParams.tag;
+
+  $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts?fetchImages=true&labels='+$scope.labelTag+'&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
+  .success(function (response) {
+     $scope.PostPreview = response.items;
+     console.log($scope.PostPreview);
+  });
+
+  $scope.doRefresh = function() {
+  
+      console.log('Refreshing!');
+      $timeout( function() {
+        //simulate async response
+      
+    $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts?fetchImages=true&labels='+$scope.labelTag+'&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
+    .success(function (response) {
+       $scope.PostPreview = response.items;
+       console.log($scope.PostPreview);
+    });
+ 
+
+
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    
+    }, 1000);
+      
+  };
+    
+
         
 })
 
