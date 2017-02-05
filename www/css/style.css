@@ -81,5 +81,7 @@ a{
 .search-post-item img{
 	 width: 100%;
 }
-
+.search-post-prev{
+	color: #fff;
+}
 /*END - section search post*/

@@ -16,7 +16,6 @@ angular.module('starter.controllers', ['ngSanitize'])
         //simulate async response
       
       Home.get().then(function (response) {
-         console.log(response.data.items);
         $scope.PostPreview = response.data.items;
 
       });      
@@ -28,18 +27,20 @@ angular.module('starter.controllers', ['ngSanitize'])
     }, 1000);
       
   };
-    
+    $scope.openSearchBox = function(){
+      $scope.SearchBox = true;
+    }
 
 })
 
 
-// .filter('GetImagePost', function() {
-//     return function(PostPreview, limit) {
+.filter('GetImagePost', function() {
+    return function(PostPreview, limit) {
 
-//          return PostPreview.substr(0, limit);
+         return PostPreview.substr(0, limit);
 
-//     }
-// })
+    }
+})
 
 .controller('PostCtrl', function($scope,$http, $stateParams) {
       
@@ -48,7 +49,7 @@ angular.module('starter.controllers', ['ngSanitize'])
       $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts/'+ $scope.GetPostId +'?&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
       .success(function (response) {
          $scope.PostDetail = response;
-          console.log(response.labels)
+          console.log(response)
       });
 
         
@@ -57,14 +58,12 @@ angular.module('starter.controllers', ['ngSanitize'])
 .controller('SearchCtrl', function($scope,$http, $stateParams) {
 
   $scope.search = function(term){
-    console.log(term);
-
-      $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts?fetchImages=true&search?q='+term+'&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
+    if(term.length >= 2){
+      $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts/search?q='+term+'&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
       .success(function (response) {
-          console.log(response.items)
           $scope.SearchPostItem = response.items;
       });
-
+    }
   }
         
 })

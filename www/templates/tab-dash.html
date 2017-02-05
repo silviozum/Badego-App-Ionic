@@ -7,11 +7,8 @@
     </div>
     <div class="search-post-item" ng-repeat="item in SearchPostItem">
       <a ui-sref="post({postId: item.id})">
-          <div ng-repeat="ImageFeatured in item.images">
-            <img src="{{ImageFeatured.url}}">
-          </div>
           <span>{{item.title}}</span>
-        
+          <div ng-bind-html="item.content | GetImagePost: 650 "class="search-post-prev"></div>
       </a>
   </section>
   <!--END SEARCH POST-->
