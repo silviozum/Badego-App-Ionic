@@ -46,11 +46,32 @@ angular.module('starter.controllers', ['ngSanitize'])
       $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts/'+ $scope.GetPostId +'?&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
       .success(function (response) {
          $scope.PostDetail = response;
-          console.log(response)
+          $scope.tagRelated = response.labels[0];
       });
 
         
 })
+
+.controller('PostCtrl', function($scope,$http, $stateParams) {
+      
+      $scope.GetPostId = $stateParams.postId;      
+    
+      $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts/'+ $scope.GetPostId +'?&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
+      .success(function (response) {
+         $scope.PostDetail = response;
+          $scope.tagRelated = response.labels[0];
+          console.log($scope.tagRelated)
+          $http.get('https://www.googleapis.com/blogger/v3/blogs/1007462794286730766/posts?fetchImages=true&labels='+$scope.tagRelated+'&key=AIzaSyBlkwyQ9jO5AxIxUK5zl-Qbcvmgr-AW25s')
+          .success(function (response) {
+             $scope.relatedItems = response.items;
+
+             console.log($scope.relatedItems);
+          });
+      });
+
+        
+})
+  
 
 .controller('SearchCtrl', function($scope,$http, $stateParams) {
 

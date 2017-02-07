@@ -1,7 +1,7 @@
 /* reset */
 a{
 	text-decoration:none;
-	color
+	color:#000;
 }
 li{
 	list-style: none;
@@ -133,5 +133,24 @@ li{
 }
 .search-post-prev{
 	color: #fff;
+}
+.related-posts a{
+	margin: 10px;
+	display: block;
+}
+.related-posts a span{
+	    font-family: 'Droid Serif', serif !important;
+    color: #393a3b;
+    font-weight: bold;
+    font-size: 24px;
+    display: block;
+    margin-top: 26px;
+    line-height: 32px;
+    letter-spacing: -1px;
+   
+}
+.related-posts a img{
+	width: 100%;
+	height: auto;
 }
 /*END - section search post*/

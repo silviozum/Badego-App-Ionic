@@ -1,10 +1,43 @@
 <ion-view>
+    <!-- FIXED BAR -->
+  <div class="fixed-bar">
+    <nav>
+      <li>
+        <button ng-click="SearchBox = !SearchBox">Buscar</button>
+      </li>
+    </nav>
+  </div>  
+  <!-- END FIXED BAR -->
+  
+  <!-- SEARCH POST-->
+  <section class="search-post" ng-controller="SearchCtrl" ng-show="SearchBox">
+    <div class="input-search">
+      <input type="text" name="" ng-model="term" ng-keyup="search(term)" placeholder="search">
+    </div>
+    <div class="search-post-item" ng-repeat="item in SearchPostItem">
+      <a ui-sref="post({postId: item.id})">
+          <span>{{item.title}}</span>
+          <div ng-bind-html="item.content | GetImagePost: 650 "class="search-post-prev"></div>
+      </a>
+  </section>
+  <!--END SEARCH POST-->
   <ion-content>
+
     <section class="content-PostDetail">
       <h2 class="title-post-detail">{{PostDetail.title}}</h2>
       <div class="post-detail"ng-bind-html="PostDetail.content"></div>
       
-
-	</section>  
+	<div class="related-posts">
+	<h3>Relacionados</h3>
+		<div ng-repeat="related in relatedItems" >
+		<a ui-sref="post({postId: related.id})">
+			<div ng-repeat="ImageFeatured in related.images">
+            	<img src="{{ImageFeatured.url}}">
+          	</div>
+			<span>{{related.title}}</span>
+			</a>
+		</div>
+	</div> 
+	</section> 
   </ion-content>
 </ion-view>
