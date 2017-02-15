@@ -1,39 +1,43 @@
 {
   "name": "angular-socialshare",
-  "main": [
-    "angular-socialshare.js",
-    "angular-socialshare.css",
-    "angular-socialshare.less"
-  ],
-  "version": "1.4.5",
+  "version": "2.3.6",
+  "description": "A social media url and content share module for angularjs.",
   "authors": [
-    "djds4rce <djd4rce@gmail.com>"
+    "Filippo Oretti <filippo.oretti@gmail.com",
+    "Dario Andrei <wouldgo84@gmail.com>"
   ],
-  "description": "Social Share buttons for AngularJS",
-  "keywords": [
-    "social",
-    "googleplus",
-    "facebook",
-    "twitter",
-    "linkdin"
-  ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "conf",
+    "gulpfile.js",
+    "index.html",
+    "assets"
   ],
-  "homepage": "https://github.com/djds4rce/angular-socialshare",
-  "_release": "1.4.5",
+  "keywords": [
+    "social",
+    "sharing",
+    "buttons",
+    "share",
+    "angular",
+    "angularjs"
+  ],
+  "main": [
+    "./dist/angular-socialshare.min.js"
+  ],
+  "license": "MIT",
+  "homepage": "http://720kb.github.io/angular-socialshare/",
+  "_release": "2.3.6",
   "_resolution": {
     "type": "version",
-    "tag": "1.4.5",
-    "commit": "c7e27532e31872177ea6e1abcc125b4f02978427"
+    "tag": "2.3.6",
+    "commit": "94f0682c298c77d5ebc5fe03c5b0d3e8ba3859e6"
   },
-  "_source": "https://github.com/djds4rce/angular-socialshare.git",
-  "_target": "^1.4.5",
-  "_originalSource": "angular-socialshare",
+  "_source": "https://github.com/720kb/angular-socialshare.git",
+  "_target": "^2.3.6",
+  "_originalSource": "angularjs-socialshare",
   "_direct": true
 }

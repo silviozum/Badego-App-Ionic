@@ -1,3 +1,11 @@
+
+
+<meta content="{{PostDetail.title}}" property="og:title"  />
+
+<meta content='http://badego.com.br/#/post/{{PostDetail.title.id}}' property='og:url'/>
+
+<meta content='{{metaImages }}' property='og:image'/>
+
 <ion-view>
     <!-- FIXED BAR -->
   <div class="fixed-bar">
@@ -24,20 +32,20 @@
   <ion-content>
 
     <section class="content-PostDetail">
-      <h2 class="title-post-detail">{{PostDetail.title}}</h2>
-      <div class="post-detail"ng-bind-html="PostDetail.content"></div>
+		<h2 class="title-post-detail">{{PostDetail.title}}</h2>
+		<div class="post-detail"ng-bind-html="PostDetail.content"></div>
       
-	<div class="related-posts">
-	<h3>Relacionados</h3>
-		<div ng-repeat="related in relatedItems" >
-		<a ui-sref="post({postId: related.id})">
-			<div ng-repeat="ImageFeatured in related.images">
-            	<img src="{{ImageFeatured.url}}">
-          	</div>
-			<span>{{related.title}}</span>
-			</a>
-		</div>
-	</div> 
+		<div class="related-posts" ng-if="relatedItems">
+			<h3>Relacionados</h3>
+			<div ng-repeat="related in relatedItems" >
+				<a ui-sref="post({postId: related.id})">
+					<div ng-repeat="ImageFeatured in related.images">
+		            	<img src="{{ImageFeatured.url}}">
+		          	</div>
+					<span>{{related.title}}</span>
+				</a>
+			</div>
+		</div> 
 	</section> 
   </ion-content>
 </ion-view>

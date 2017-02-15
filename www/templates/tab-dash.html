@@ -32,9 +32,30 @@
             <img src="{{ImageFeatured.url}}">
           </div>
             <h2>{{post.title}}</h2>
+            <div class="post-author">de, <span>{{post.author.displayName}}</span></div>
             <nav class="tags">
               <li ng-repeat="tags in post.labels"><a  ui-sref="tag-search({tag: tags}) ">{{tags}}</a></li>
             </nav>
+             <a href="#"
+             ng-repeat="ImageFeatured in post.images"
+              socialshare
+              socialshare-provider="twitter"
+              socialshare-text="{{post.title}}"
+              socialshare-via="badeguinho"
+              socialshare-media="{{ImageFeatured.url}}"
+              socialshare-url="http://badego.com.br/#/post/{{post.id}}">
+              twitter
+            </a>             
+            <a href="#"
+            ng-repeat="ImageFeatured in post.images"
+              socialshare
+              socialshare-provider="facebook"
+              socialshare-text="{{post.title}}"
+              socialshare-media="{{ImageFeatured.url}}"
+
+              socialshare-url="http://badego.com.br/#/post/{{post.id}}">
+              facebook
+            </a>
         </a>
       </div>
     </section>  

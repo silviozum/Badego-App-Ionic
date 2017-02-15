@@ -10,7 +10,8 @@ angular.module('starter', ['ionic',
    'starter.services',
    'ngResource',
    'angular-oauth2',
-   'djds4rce.angular-socialshare'
+   'ngMeta',
+   '720kb.socialshare'
 ])
 
   
@@ -30,14 +31,17 @@ angular.module('starter', ['ionic',
   });
 })
 
-.run(function($FB){
-  $FB.init('1743762059272745');
-})
+// .run(function($FB){
+//   $FB.init('1743762059272745');
+// })
 
 
+        .run(function(ngMeta) {
+          ngMeta.init();
+        })
 
+.config(function($stateProvider, $urlRouterProvider, ngMetaProvider) {
 
-.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -57,7 +61,13 @@ angular.module('starter', ['ionic',
   .state('post', {
     url: '/post/:postId',  
     templateUrl: 'templates/post.html',
-    controller: 'PostCtrl'
+    controller: 'PostCtrl',
+    data: {
+      meta: {
+        'title': 'About Us',
+        'description': 'About us description'
+      }
+    }
   })
 
   .state('tag-search', {

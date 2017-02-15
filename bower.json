@@ -10,5 +10,9 @@
   ],
   "description": "SExo, DRogas e Hot ROlls",
   "main": "index.html",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "angular-socialshare": "angularjs-socialshare#^2.3.6",
+    "ngMeta": "^1.0.0"
+  }
 }
